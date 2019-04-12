@@ -1,0 +1,10 @@
+<html>
+<h1 class="ml-3">Update {{event.name}}:</h1>
+	<form class="row pb-2" id="updateevent" action="/events" method="post">
+        <div class="col">Name: <input type="text" class="form-control" name="name" value="{{event.name}}"></div>
+        <div class="col">Start Date: <input type="date" class="form-control" name="start_date" value="{{event.start_date}}"></div>
+        <div class="col">End Date: <input type="date" class="form-control" name="end_date" value="{{event.end_date}}"></div>
+        <textarea class="form-control mt-2 ml-3" id="event-update-text" name="description">{{event.description}}</textarea>
+    </form>
+    <button class="btn btn-primary" type="submit" onclick="updateEvent({{event.id}})">Update Event</button>
+</html>

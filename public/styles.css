@@ -1,0 +1,31 @@
+/*Text fields on the update-character page*/
+.char-update-text{
+	width: 99.5%;
+}
+/*Text area on the update-events page*/
+#event-update-text{
+	width: 96%;
+	height: 150px;
+}
+/*Delete Buttons*/
+.btn-danger{
+	background-color: #3b4c68;
+	border-radius: 0!important;
+}
+/*Update Buttons*/
+.btn-warning{
+	background-color: #379e52;
+	border-radius: 0!important;
+}
+/*Filter Buttons*/
+.btn-success{
+	background-color: #2e7c96;
+}
+/*Search Buttons*/
+.btn-secondary{
+	background-color: #9b2033;
+}
+/*Add Buttons*/
+.btn-primary{
+	background-color: #dbc013;
+}

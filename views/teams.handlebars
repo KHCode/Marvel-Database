@@ -1,0 +1,31 @@
+<html>
+    <div class="form" id="add-form"><!--Dynamically add label and text inputs for add-form -->
+        <label for="addteam">Add a Team:</label>
+        <form class="row pb-2" id="addteam" action="/teams" method="post">
+            <div class="col"> <input type="text" class="form-control" name="name" placeholder="Name"></div>
+            <button class="btn btn-primary" type="submit" value="add_team">Add A Team</button>
+        </form>
+
+        <label for="search_teams">Search For a Team by Name:</label>
+        <form class="row pb-2" id='search_teams' action='' method=''>
+            <div class="col"><input id='team_search_string' type='text' name='team_search_string' value=''></div>
+            <input class="btn btn-secondary ml-3" type="button" value="Search Teams" onclick="searchTeamsByName()">
+        </form>
+
+    </div> 
+
+    <table class="table" id="view-data-table">
+        <thead> 
+            <th>Team</th> 
+        </thead> 
+        <tbody>
+            {{#each teams}} 
+            <tr> 
+                <td>{{name}}</td> 
+                <td><button class="btn btn-danger" onclick="deleteTeam({{id}})">Delete</button></td>
+                <td><a role="button" class="btn btn-warning" href="/teams/{{id}}">Update</a></td>
+            </tr> 
+            {{/each}} 
+        </tbody> 
+    </table> 
+</html>

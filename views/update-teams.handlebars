@@ -1,0 +1,7 @@
+<html>
+<h1>Update {{teams.name}}:</h1>
+	<form class="row pb-2" id="updateteam" action="/teams" method="post">
+        <div class="col">Team: <input type="text" class="form-control" name="name" value="{{teams.name}}"></div>
+    </form>
+    <input class="btn btn-primary" type="button" value="Update Team" onclick="updateTeam({{teams.id}})">
+</html>

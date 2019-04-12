@@ -1,0 +1,49 @@
+<html>
+    <div class="form" id="add-form">
+        <label for="addevent">Add an Event:</label>
+        <form class="row pb-2" id="addevent" action="/events" method="post">
+            <div class="col"> <input type="text" class="form-control" name="name" placeholder="Name"></div>
+            <div class="col"> <input type="date" class="form-control" name="start_date" placeholder="Start Date"></div>
+            <div class="col"> <input type="date" class="form-control" name="end_date" placeholder="End Date"></div>
+            <div class="col"> <textarea class="form-control" name="description" placeholder="Description"></textarea></div>
+            <button class="btn btn-primary" type="submit" value="add_event">Add Event</button>
+        </form>
+
+        <label for="filter_event">Filter by Start Date:</label>
+        <form class="row pb-2" id='filter_event' action='' method=''>
+            <div class="col"><select id='start_date_filter' name="start_date"> 
+                {{#each startYears}}
+                <option value="{{start_year}}">{{start_year}}</option>
+                {{/each}}
+            </select></div>
+            <input class="btn btn-success ml-3" type="button" value="Filter Events" onclick="filterEventsByStartYear()">
+        </form>
+
+        <label for="search_events">Search For an Event by Name:</label>
+        <form class="row pb-2" id='search_events' action='' method=''>
+            <div class="col"><input id='name_search_string' type='text' name='name_search_string' value=''></div>
+            <input class="btn btn-secondary ml-3" type="button" value="Search Events" onclick="searchEventsByName()">
+        </form>
+    </div> 
+
+    <table class="table" id="view-data-table">
+        <thead> 
+            <th>Name</th> 
+            <th>Start Date</th> 
+            <th>End Date</th>
+            <th>Description</th>
+        </thead> 
+        <tbody>
+            {{#each events}} 
+            <tr> 
+                <td>{{name}}</td> 
+                <td>{{start_date}}</td> 
+                <td>{{end_date}}</td> 
+                <td>{{description}}</td> 
+                <td><button class="btn btn-danger" onclick="deleteEvents({{id}})">Delete</button></td>
+                <td><a role="button" class="btn btn-warning" href="/events/{{id}}">Update</a></td>
+            </tr> 
+            {{/each}} 
+        </tbody> 
+    </table> 
+</html>

@@ -1,0 +1,7 @@
+<html>
+<h1>Update {{superpowers.description}}:</h1>
+	<form class="row pb-2" id="updatesuperpowers" action="/superpowers" method="post">
+        <div class="col">Superpower: <input type="text" class="form-control" name="description" value="{{superpowers.description}}"></div>
+    </form>
+    <input class="btn btn-primary" type="button" value="Update superpowers" onclick="updateSuperpowers({{superpowers.id}})">
+</html>

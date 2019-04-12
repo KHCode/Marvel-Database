@@ -1,0 +1,61 @@
+<html>
+    <div class="form" id="add-form"><!--Dynamically add label and text inputs for add-form -->
+        <label for="addcharacter">Add a Character:</label>
+        <form class="row pb-2" id="addcharacter" action="/characters" method="post">
+            <div class="col"> <input type="text" class="form-control" name="alias" placeholder="Alias"></div>
+            <div class="col"> <input type="text" class="form-control" name="codename" placeholder="Codename"></div>
+            <div class="col"> <select class="form-control" name="home">
+                <option value="" disabled selected>Home</option>
+                {{#each locations}}
+                <option value="{{id}}">{{name}}</option>
+                {{/each}}
+            </select></div>
+            <div class="col"> <select class="form-control" name="archnemesis">
+                <option value="" disabled selected>Archnemesis</option>
+                {{#each characters}}
+                <option value="{{id}}">{{codename}}</option>
+                {{/each}}
+                <option value="">NONE</option>
+            </select></div>
+            <button class="btn btn-primary" type="submit" value="add_character">Add A Character</button>
+        </form>
+
+        <label for="search_characters">Search For a Character by Codename:</label>
+        <form class="row pb-2" id='search_characters' action='' method=''>
+            <div class="col"><input id='codename_search_string' type='text' name='codename_search_string' value=''></div>
+            <input class="btn btn-secondary ml-3" type="button" value="Search Characters" onclick="searchCharactersByCodename()">
+        </form>
+
+        <label for="filter_character">Filter by Home:</label>
+        <form class="row pb-2" id='filter_character' action='' method=''>
+            <div class="col"><select id='home_filter' name="home"> 
+                <option value="" disabled selected>Home</option>
+                {{#each locations}}
+                <option value="{{id}}">{{name}}</option>
+                {{/each}}
+            </select></div>
+            <input class="btn btn-success ml-3" type="button" value="Filter Characters" onclick="filterCharactersByHome()">
+        </form>
+    </div> 
+
+    <table class="table" id="view-data-table">
+        <thead> 
+            <th>Alias</th> 
+            <th>Codename</th> 
+            <th>Home</th>
+            <th>Nemesis</th>
+        </thead> 
+        <tbody>
+            {{#each characters}} 
+            <tr> 
+                <td>{{alias}}</td> 
+                <td>{{codename}}</td> 
+                <td>{{home}}</td> 
+                <td>{{arch_nemesis}}</td> 
+                <td><input class="btn btn-danger" type="button" value="Delete" onclick="deleteCharacters({{id}})"></td>
+                <td><a role="button" class="btn btn-warning" href="/characters/{{id}}">Update</a></td>
+            </tr> 
+            {{/each}} 
+        </tbody> 
+    </table> 
+</html>

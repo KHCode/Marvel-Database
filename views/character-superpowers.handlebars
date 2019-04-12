@@ -1,0 +1,42 @@
+<html>
+    <div class="form pb-2">
+
+       <form id="add_character_superpowers" action="/character-superpowers" method="post">
+        <label for="character_select">Characters:</label> 
+        <div class="row pb-2" id="character_select">
+            <select name='char_id'>
+                {{#each characters}}
+                  <option value='{{char_id}}'>{{codename}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <label for="superpower_select">Superpowers:<sup>Multi-select</sup></label>
+        <div class="row pb-2" id="superpower_select">
+            <select multiple name="superpowers"> 
+                {{!-- We display title but the value that is submitted through the form is actually the certificate's id --}}
+                {{#each superpowers}}
+                <option value="{{pwr_id}}">{{description}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Submit">
+        </form> 
+    </div>
+
+    <table class="table" id="view-data-table">
+        <thead> 
+            <th>Character</th> 
+            <th>Superpowers</th> 
+        </thead> 
+        <tbody>
+            {{#each char_powers}} 
+            <tr> 
+                <td>{{codename}}</td> 
+                <td>{{description}}</td> 
+                <td><button class="btn btn-danger" onclick="deleteCharPowers({{pwr_id}}, {{char_id}})">Delete</button></td>
+            </tr> 
+            {{/each}} 
+        </tbody> 
+    </table> 
+    
+</html>

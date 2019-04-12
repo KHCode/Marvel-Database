@@ -1,0 +1,27 @@
+<html>
+<h1 class="ml-3">Update {{character.codename}}:</h1>
+    <div class="container form-group">
+        <form class="row pb-2" id="updatecharacter" action="/characters" method="post">
+            <div class="col char-update-text">Alias: <input type="text" class="form-control" name="alias" value="{{character.alias}}"></div>
+            <div class="col char-update-text">Codename: <input type="text" class="form-control" name="codename" value="{{character.codename}}"></div>
+        <select class="form-control mx-3 my-2" name="home" id="location-selector">
+            <option value="" disabled selected>Home</option>
+            {{#each locations}}
+            <option value="{{id}}">{{name}}</option>
+            {{/each}}
+        </select>
+        <select class="form-control mx-3 mb-2" name="archNemesis" id="nemesis-selector">
+            <option value="" disabled selected>Archnemesis</option>
+            {{#each characters}}
+            <option value="{{id}}">{{codename}}</option>
+            {{/each}}
+            <option value="NULL">NONE</option>
+        </select>
+            <input class="btn btn-primary ml-3" type="button" value="Update Character" onclick="updateCharacter({{character.id}})">
+        </form>   
+    </div>
+
+    
+<script defer> selectLocation({{character.home}});</script>
+<script defer> selectNemesis({{character.archNemesis}});</script>
+</html>

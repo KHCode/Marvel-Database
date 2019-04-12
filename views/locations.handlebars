@@ -1,0 +1,30 @@
+<html>
+    <div class="form" id="add-form">
+        <label for="addlocation">Add a Location:</label>
+        <form class="row pb-2" id="addlocation" action="/locations" method="post">
+            <div class="col"> <input type="text" class="form-control" name="name" placeholder="Name"></div>
+            <button class="btn btn-primary" type="submit" value="add_character">Add Location</button>
+        </form>
+
+        <label for="search_locations">Search For a Location by Name:</label>
+        <form class="row pb-2" id='search_locations' action='' method=''>
+            <div class="col"><input id='name_search_string' type='text' name='name_search_string' value=''></div>
+            <input class="btn btn-secondary ml-3" type="button" value="Search Locations" onclick="searchLocationsByName()">
+        </form>
+    </div> 
+
+    <table class="table" id="view-data-table">
+        <thead> 
+            <th>Name</th> 
+        </thead> 
+        <tbody>
+            {{#each locations}} 
+            <tr> 
+                <td>{{name}}</td> 
+                <td><button class="btn btn-danger" onclick="deleteLocations({{id}})">Delete</button></td>
+                <td><a role="button" class="btn btn-warning" href="/locations/{{id}}">Update</a></td>
+            </tr> 
+            {{/each}} 
+        </tbody> 
+    </table> 
+</html>
